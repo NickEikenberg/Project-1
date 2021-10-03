@@ -180,6 +180,26 @@ main {
 .countdown-container img {
   animation: zoom-out 0.25s linear;
 }
+
+.input-container {
+  position: absolute;
+  align-self: flex-end;
+  width: 60vw;
+  height: 7vh;
+  margin-bottom: 3%;
+  display: flex;
+  align-items: center;
+}
+
+#user-input {
+  width: 100%;
+  height: 100%;
+  font-size: 2em;
+  font-family: 'Staatliches', sans-serif, cursive;
+  color: var(--pokemon-yellow);
+  background: rgba(1, 1, 1, 0.5);
+  text-shadow: 2px 2px 2px rgb(31, 58, 99);
+}
 /* SCORES AND FOOTER */
 
 .score {

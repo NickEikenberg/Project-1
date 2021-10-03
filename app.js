@@ -33,6 +33,9 @@ const playOriginal151 = async () => {
     $('.pokemon-container').append(
       $('<img>').attr('src', poke.img).addClass('current-pokemon cover')
     );
+    const $spinningBackground = $('.pokemon-spinning-background');
+    $spinningBackground.removeClass('hidden');
+    $('.input-container').removeClass('hidden');
   };
 
   displayPokemon();
@@ -67,16 +70,19 @@ const displayCountdown = () => {
 };
 
 // IIFE to start the game. This runs as soon as the page is loaded
-(() => {
-  const displayStartScreen = () => {
-    $startScreenModal = $('.game-start-modal');
-    $startScreenModal.removeClass('hidden');
-  };
-  displayStartScreen();
-})();
+
+const displayStartScreen = () => {
+  $startScreenModal = $('.game-start-modal');
+  $startScreenModal.removeClass('hidden');
+};
+displayStartScreen();
 
 $('.btn-play').on('click', () => {
   $('.game-start-modal').addClass('hidden');
   displayCountdown();
   startGame();
+});
+
+$('#user-input').on('keydown', (event) => {
+  event.code === 'Enter' ? console.log($('#user-input').val()) : null;
 });
