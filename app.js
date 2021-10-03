@@ -83,6 +83,14 @@ $('.btn-play').on('click', () => {
   startGame();
 });
 
-$('#user-input').on('keydown', (event) => {
-  event.code === 'Enter' ? console.log($('#user-input').val()) : null;
-});
+const compareUserInputToPokemonName = () => {
+  $('#user-input').on('keydown', (event) => {
+    if (event.code === 'Enter') {
+      const userInput = $('#user-input').val();
+      $('#user-input').val('');
+      console.log(userInput);
+    }
+  });
+};
+
+compareUserInputToPokemonName();
