@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-red-main: rgb(223, 55, 41);
+  --inner-light: rgb(237, 231, 244);
+  --outer-light: rgb(111, 177, 218);
+  --red-light: rgb(254, 110, 81);
+  --red-med: rgb(242, 73, 48);
+}
+
+body {
+  font-family: 'Staatliches', sans-serif, cursive;
+  background: rgb(232, 185, 182);
+  background: radial-gradient(
+    circle,
+    rgba(232, 185, 182, 1) 0%,
+    rgba(223, 55, 41, 1) 100%
+  );
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+.whos-that-logo {
+  width: 200px;
+  transform: translateY(50px);
+}
+
+.hidden {
+  display: none;
+}
+
+/* MAIN CONTENT */
+
+main {
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-spinning-background {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-bg-outer {
+  width: 200px;
+  height: 200px;
+  background: var(--outer-light);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: spin 4s infinite linear;
+}
+.pokemon-bg-outer:before,
+.pokemon-bg-outer:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200px;
+  width: 200px;
+  background: var(--outer-light);
+}
+.pokemon-bg-outer:before {
+  transform: rotate(30deg);
+}
+.pokemon-bg-outer:after {
+  transform: rotate(60deg);
+}
+
+.pokemon-bg-inner {
+  width: 150px;
+  height: 150px;
+  background: var(--inner-light);
+  position: relative;
+  z-index: 1;
+  animation: spin-backwards 2s infinite linear;
+}
+.pokemon-bg-inner:before,
+.pokemon-bg-inner:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 150px;
+  width: 150px;
+  background: var(--inner-light);
+}
+.pokemon-bg-inner:before {
+  transform: rotate(30deg);
+}
+.pokemon-bg-inner:after {
+  transform: rotate(60deg);
+}
+
+.pokemon-container {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+}
+.cover {
+  filter: drop-shadow(10px 10px 10px black) invert(50%);
+}
+
+/* SCORES AND FOOTER */
+
+.score {
+  height: 15vh;
+  background: rgb(254, 110, 81);
+  box-shadow: 2px -2px 20px black;
+  border-inline: 10px solid rgb(58, 99, 167);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.score p {
+  color: rgb(233, 189, 49);
+  text-shadow: 2px 2px rgb(58, 99, 167);
+  font-size: 1.5em;
+}
+
+/* ANIMATIONS */
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-backwards {
+  100% {
+    transform: rotate(-360deg);
+  }
+}

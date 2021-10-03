@@ -4,10 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project 1</title>
+    <title>Pokédex</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <header>
+      <img
+        src="img/whos-that-logo.png"
+        alt="Who's that Pokemon? logo"
+        class="whos-that-logo"
+      />
+    </header>
+    <main>
+      <div class="pokemon-container"></div>
+      <div class="pokemon-spinning-background">
+        <div class="pokemon-bg-outer">
+          <div class="pokemon-bg-inner"></div>
+        </div>
+      </div>
+    </main>
+    <div class="score">
+      <div class="high-score">
+        <p>High Score: <span>0</span></p>
+      </div>
+      <div class="current-score">
+        <p>Score: <span>0</span></p>
+      </div>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
