@@ -33,7 +33,7 @@ const fetchPokemon = async (numOfPokemon) => {
 (async function () {
   // Fetches a random pokemon from the original 151
   const random151 = Math.floor(Math.random() * 151);
-  const currentPokemon = await fetchPokemon(122);
+  const currentPokemon = await fetchPokemon(random151);
 
   // Saves the current pokemons name and sprite image
   const poke = new Pokemon(

@@ -10,6 +10,8 @@
   --outer-light: rgb(111, 177, 218);
   --red-light: rgb(254, 110, 81);
   --red-med: rgb(242, 73, 48);
+  --pokemon-blue: rgb(53, 95, 160);
+  --pokemon-yellow: rgb(233, 189, 49);
 }
 
 body {
@@ -32,10 +34,6 @@ header {
 .whos-that-logo {
   width: 200px;
   transform: translateY(50px);
-}
-
-.hidden {
-  display: none;
 }
 
 /* MAIN CONTENT */
@@ -118,6 +116,37 @@ main {
   filter: drop-shadow(10px 10px 10px black) invert(50%);
 }
 
+/* MODALS */
+
+.game-start-modal {
+  position: absolute;
+  width: 80%;
+  height: 50%;
+  background: rgb(210, 67, 58);
+  background: radial-gradient(
+    circle,
+    rgba(210, 67, 58, 1) 0%,
+    rgb(192, 48, 34) 100%
+  );
+  z-index: 2;
+  border: 2px solid var(--pokemon-yellow);
+  border-radius: 5%;
+  box-shadow: 2px 2px 5px rgb(34, 62, 104);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.how-to-play {
+  color: var(--pokemon-yellow);
+  text-shadow: 2px 2px var(--pokemon-blue);
+}
+
+.game-rules {
+  color: var(--pokemon-yellow);
+}
+
 /* SCORES AND FOOTER */
 
 .score {
@@ -148,4 +177,10 @@ main {
   100% {
     transform: rotate(-360deg);
   }
+}
+
+/* EXTRA CLASSES */
+
+.hidden {
+  display: none;
 }
