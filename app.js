@@ -49,13 +49,12 @@ const fetchPokemon = async (numOfPokemon) => {
   };
 
   displayPokemon();
-
-  //   $('.pokemon-container').append(
-  //     $('<img>').attr('src', poke.img).addClass('current-pokemon cover')
-  //   );
   console.log(poke.name);
 
-  const revealPokemon = (pokemon) => {
-    pokemon.removeClass('cover');
+  // Removes the filter from the pokemon div and fully displays the current pokemon, after the player guesses
+  const revealPokemon = () => {
+    $('.current-pokemon').removeClass('cover');
   };
+
+  const play = () => {};
 })();
