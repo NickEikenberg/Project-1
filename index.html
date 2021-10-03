@@ -22,13 +22,21 @@
       />
     </header>
     <main>
-      <div class="game-start-modal">
+      <div class="game-start-modal hidden">
         <h2 class="how-to-play">HOW TO PLAY</h2>
         <p class="game-rules">
           Are you up to the challenge? Correctly guess the names of all original
-          151 Pokemon and you win!
+          151 Pokemon and you win! Guess incorrectly 3 times and you lose!
         </p>
-        <div class="btn-play"></div>
+        <div class="btn-play">
+          <img src="img/btn-play.png" alt="" />
+        </div>
+      </div>
+
+      <div class="modal-wrong-x">
+        <div class="x-container"><img src="img/icon-x.png" alt="" /></div>
+        <div class="x-container"><img src="img/icon-x.png" alt="" /></div>
+        <div class="x-container"><img src="img/icon-x.png" alt="" /></div>
       </div>
 
       <div class="pokemon-container"></div>

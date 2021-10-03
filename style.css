@@ -134,19 +134,40 @@ main {
   box-shadow: 2px 2px 5px rgb(34, 62, 104);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
 .how-to-play {
   color: var(--pokemon-yellow);
   text-shadow: 2px 2px var(--pokemon-blue);
+  font-size: 2em;
 }
 
 .game-rules {
   color: var(--pokemon-yellow);
+  font-size: 1.5em;
 }
 
+.btn-play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5% 0;
+}
+.btn-play img {
+  width: 70%;
+}
+.btn-play img:hover {
+  transform: scale(1.1);
+}
+
+.modal-wrong-x {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+}
 /* SCORES AND FOOTER */
 
 .score {
