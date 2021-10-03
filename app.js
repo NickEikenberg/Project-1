@@ -15,22 +15,9 @@ const fetchPokemon = async (numOfPokemon) => {
   ).then((data) => data);
 
   return pokemon;
-
-  //   $.ajax({
-  //     url: `https://pokeapi.co/api/v2/pokemon/${numOfPokemon}`,
-  //     type: 'GET',
-  //   }).then(
-  //     (data) => {
-
-  //       return data;
-  //     },
-  //     () => {
-  //       console.log('ERROR');
-  //     }
-  //   );
 };
 
-(async function () {
+const playOriginal151 = async () => {
   // Fetches a random pokemon from the original 151
   const random151 = Math.floor(Math.random() * 151);
   const currentPokemon = await fetchPokemon(random151);
@@ -55,6 +42,35 @@ const fetchPokemon = async (numOfPokemon) => {
   const revealPokemon = () => {
     $('.current-pokemon').removeClass('cover');
   };
+};
 
-  const play = () => {};
+const startGame = () => {
+  displayPokemon();
+  setTimeout(() => {
+    playOriginal151();
+  }, 3000);
+};
+
+const displayCountdown = () => {
+  const $countdownContainer = $('.countdown-container');
+  $countdownContainer.append($('<img>').attr('src', 'img/3.png'));
+  setTimeout(() => {
+    $countdownContainer.empty();
+    $countdownContainer.append($('<img>').attr('src', 'img/2.png'));
+    setTimeout(() => {
+      $countdownContainer.empty();
+      $countdownContainer.append($('<img>').attr('src', 'img/1.png'));
+      setTimeout(() => {
+        $countdownContainer.empty();
+      }, 1000);
+    }, 1000);
+  }, 1000);
+};
+
+(() => {
+  const displayStartScreen = () => {
+    $startScreenModal = $('.game-start-modal');
+    $startScreenModal.removeClass('hidden');
+  };
+  displayStartScreen();
 })();

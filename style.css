@@ -122,11 +122,11 @@ main {
   position: absolute;
   width: 80%;
   height: 50%;
-  background: rgb(210, 67, 58);
+  background: rgb(101, 145, 212);
   background: radial-gradient(
     circle,
-    rgba(210, 67, 58, 1) 0%,
-    rgb(192, 48, 34) 100%
+    rgba(101, 145, 212, 1) 0%,
+    rgba(53, 95, 160, 1) 100%
   );
   z-index: 2;
   border: 2px solid var(--pokemon-yellow);
@@ -141,13 +141,15 @@ main {
 
 .how-to-play {
   color: var(--pokemon-yellow);
-  text-shadow: 2px 2px var(--pokemon-blue);
+  text-shadow: 2px 2px 2px rgb(31, 58, 99);
   font-size: 2em;
 }
 
 .game-rules {
   color: var(--pokemon-yellow);
   font-size: 1.5em;
+  text-shadow: 2px 2px 2px rgb(31, 58, 99);
+  width: 75%;
 }
 
 .btn-play {
@@ -161,12 +163,22 @@ main {
 }
 .btn-play img:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 .modal-wrong-x {
   position: absolute;
   z-index: 3;
   display: flex;
+}
+
+.countdown-container {
+  position: absolute;
+  z-index: 4;
+  animation-timing-function: ;
+}
+.countdown-container img {
+  animation: zoom-out 0.25s linear;
 }
 /* SCORES AND FOOTER */
 
@@ -197,6 +209,28 @@ main {
 @keyframes spin-backwards {
   100% {
     transform: rotate(-360deg);
+  }
+}
+
+@keyframes zoom-out {
+  0% {
+    transform: scale(2);
+    opacity: 0.5;
+  }
+
+  25% {
+    transform: scale(1.5);
+    opacity: 0.75;
+  }
+
+  75% {
+    transform: scale(1);
+    opacity: 1.25;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
