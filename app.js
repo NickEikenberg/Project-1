@@ -45,7 +45,6 @@ const playOriginal151 = async () => {
 };
 
 const startGame = () => {
-  displayPokemon();
   setTimeout(() => {
     playOriginal151();
   }, 3000);
@@ -67,6 +66,7 @@ const displayCountdown = () => {
   }, 1000);
 };
 
+// IIFE to start the game. This runs as soon as the page is loaded
 (() => {
   const displayStartScreen = () => {
     $startScreenModal = $('.game-start-modal');
@@ -74,3 +74,9 @@ const displayCountdown = () => {
   };
   displayStartScreen();
 })();
+
+$('.btn-play').on('click', () => {
+  $('.game-start-modal').addClass('hidden');
+  displayCountdown();
+  startGame();
+});
