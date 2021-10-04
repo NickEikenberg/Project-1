@@ -109,7 +109,7 @@ main {
   width: 250px;
   height: 250px;
   position: absolute;
-  z-index: 1;
+  z-index: 5;
   display: flex;
 }
 .cover {
@@ -187,7 +187,7 @@ main {
 
 .modal-wrong-x {
   position: absolute;
-  z-index: 3;
+  z-index: 6;
   display: flex;
 }
 
