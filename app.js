@@ -27,6 +27,7 @@ const fetchPokemon = async (numOfPokemon) => {
 };
 
 const playOriginal151 = async () => {
+  currentPokemonName = '';
   // Fetches a random pokemon from the original 151
   //   const random151 = () => Math.floor(Math.random() * 151 + 1);
   const getNewRandom151 = () => {
@@ -52,6 +53,7 @@ const playOriginal151 = async () => {
 
   // Appends the image to the center of the screen
   const displayPokemon = () => {
+    $('.pokemon-container').empty();
     $('.pokemon-container').append(
       $('<img>').attr('src', poke.img).addClass('current-pokemon cover')
     );
@@ -65,9 +67,9 @@ const playOriginal151 = async () => {
   displayPokemon();
 
   // Removes the filter from the pokemon div and fully displays the current pokemon, after the player guesses
-  const revealPokemon = () => {
-    $('.current-pokemon').removeClass('cover');
-  };
+};
+const revealPokemon = () => {
+  $('.current-pokemon').removeClass('cover');
 };
 
 const startGame = () => {
@@ -144,11 +146,16 @@ const compareUserInputToPokemonName = () => {
         currentCombo++;
         displayPointValue();
         $('#current-score').text(userScore);
+        revealPokemon();
 
         if (userScore >= 151) {
           console.log('You win!');
+        } else {
+          setTimeout(() => {
+            playOriginal151();
+          }, 1000);
         }
-      } else {
+      } else if (userInput !== currentPokemonName) {
         currentCombo = 0;
         currentWrongs++;
         console.log(currentWrongs);
@@ -168,12 +175,6 @@ $('.btn-play').on('click', () => {
   displayCountdown();
   startGame();
 });
-
-// $('.modal-wrong-x').append(
-//   $('<div>')
-//     .addClass('x-container')
-//     .append($('<img>').attr('src', 'img/icon-x.png'))
-// );
 
 const gameReset = () => {
   usedNumbersArray = [];
