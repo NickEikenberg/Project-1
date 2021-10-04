@@ -155,7 +155,9 @@ const compareUserInputToPokemonName = () => {
 
         // If player wins
         if (userScore >= 151) {
-          console.log('You win!');
+          setTimeout(() => {
+            $('.modal-you-win').toggleClass('hidden');
+          }, 1000);
         } else {
           setTimeout(() => {
             playOriginal151();
@@ -190,7 +192,13 @@ $('.btn-play').on('click', () => {
 });
 
 $('.btn-play-again').on('click', () => {
-  $('.modal-you-lose').addClass('hidden');
+  if ($('.modal-you-lose').hasClass('hidden') === false) {
+    $('.modal-you-lose').addClass('hidden');
+  }
+
+  if ($('.modal-you-win').hasClass('hidden') === false) {
+    $('.modal-you-win').addClass('hidden');
+  }
   gameReset();
   displayCountdown();
   startGame();

@@ -119,7 +119,8 @@ main {
 /* MODALS */
 
 .game-start-modal,
-.modal-you-lose {
+.modal-you-lose,
+.modal-you-win {
   position: absolute;
   width: 80%;
   height: 50%;
@@ -141,7 +142,8 @@ main {
 }
 
 .how-to-play,
-.you-lose-h2 {
+.you-lose-h2,
+.you-win-h2 {
   color: var(--pokemon-yellow);
   text-shadow: 2px 2px 2px rgb(31, 58, 99);
   font-size: 2em;
@@ -149,7 +151,8 @@ main {
 
 .game-rules,
 .lose-message,
-.correct-answer-p {
+.correct-answer-p,
+.win-message {
   color: var(--pokemon-yellow);
   font-size: 1.5em;
   text-shadow: 2px 2px 2px rgb(31, 58, 99);
