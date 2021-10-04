@@ -34,7 +34,7 @@ const fetchPokemon = async (numOfPokemon) => {
 const playOriginal151 = async () => {
   currentPokemonName = '';
   // Fetches a random pokemon from the original 151
-  //   const random151 = () => Math.floor(Math.random() * 151 + 1);
+
   const getNewRandom151 = () => {
     const random151 = () => {
       let num = Math.floor(Math.random() * 151 + 1);

@@ -111,6 +111,7 @@ main {
   position: absolute;
   z-index: 5;
   display: flex;
+  border: 1px solid gold;
 }
 .cover {
   filter: drop-shadow(10px 10px 10px black) invert(50%);
