@@ -42,7 +42,7 @@ const playOriginal151 = async () => {
       }
     };
     random151();
-    console.log(usedNumbersArray);
+
     return usedNumbersArray[usedNumbersArray.length - 1];
   };
   const currentPokemon = await fetchPokemon(getNewRandom151());
@@ -62,7 +62,7 @@ const playOriginal151 = async () => {
     $spinningBackground.removeClass('hidden');
     $('.input-container').removeClass('hidden');
   };
-  console.log(poke.name);
+
   currentPokemonName = poke.name;
 
   displayPokemon();
@@ -118,7 +118,6 @@ const increaseScore = () => {}; //TODO
 
 const displayWrongX = () => {
   for (let i = 1; i <= currentWrongs; i++) {
-    console.log('looped!');
     $('.modal-wrong-x').append(
       $('<div>')
         .addClass('x-container')
@@ -142,7 +141,8 @@ displayStartScreen();
 ////////
 const compareUserInputToPokemonName = () => {
   $('#user-input').on('keydown', (event) => {
-    if (event.code === 'Enter') {
+    if (event.keyCode === 13) {
+      console.log(event);
       const userInput = $('#user-input').val();
       $('#user-input').val('');
 
@@ -170,7 +170,7 @@ const compareUserInputToPokemonName = () => {
       } else if (userInput !== currentPokemonName) {
         currentCombo = 0;
         currentWrongs++;
-        console.log(currentWrongs);
+
         displayWrongX();
         //TODO, HANDLE THE PLAYER LOSING THE GAME
         if (currentWrongs >= 3) {
@@ -231,5 +231,3 @@ const displaySavedHighScore = () => {
   }
 };
 displaySavedHighScore();
-
-console.log(window.localStorage);
