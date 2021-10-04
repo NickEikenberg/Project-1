@@ -332,6 +332,15 @@ main {
   }
 }
 
+/* MEDIA QUERIES */
+@media screen and (min-width: 600px) {
+  .game-start-modal,
+  .modal-you-lose,
+  .modal-you-win {
+    width: 500px;
+  }
+}
+
 /* EXTRA CLASSES */
 
 .hidden {
