@@ -226,7 +226,12 @@ main {
   right: 0;
   animation-name: add-point;
   animation-duration: 0.5s;
-  animation-timing-function: ;
+}
+
+.x {
+  animation-name: zoom-out;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
 }
 
 /* ANIMATIONS */

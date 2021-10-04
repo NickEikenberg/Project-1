@@ -1,6 +1,7 @@
 let userScore = 0;
 let highScore = 0;
 let currentCombo = 0;
+let currentWrongs = 0;
 let currentPokemonName;
 
 $pokemonContainer = $('.pokemon-container');
@@ -95,7 +96,21 @@ const displayPointValue = () => {
     }, 500);
   }
 };
-const increaseScore = () => {};
+const increaseScore = () => {}; //TODO
+
+const displayWrongX = () => {
+  for (let i = 1; i <= currentWrongs; i++) {
+    console.log('looped!');
+    $('.modal-wrong-x').append(
+      $('<div>')
+        .addClass('x-container')
+        .append($('<img>').attr('src', 'img/icon-x.png').addClass('x'))
+    );
+  }
+  setTimeout(() => {
+    $('.modal-wrong-x').empty();
+  }, 1000);
+};
 
 const displayStartScreen = () => {
   $startScreenModal = $('.game-start-modal');
@@ -119,6 +134,11 @@ const compareUserInputToPokemonName = () => {
         }
       } else {
         currentCombo = 0;
+        currentWrongs++;
+        console.log(currentWrongs);
+        displayWrongX();
+        //TODO, HANDLE THE PLAYER LOSING THE GAME
+
         console.log('wrong');
       }
     }
@@ -132,3 +152,9 @@ $('.btn-play').on('click', () => {
   displayCountdown();
   startGame();
 });
+
+// $('.modal-wrong-x').append(
+//   $('<div>')
+//     .addClass('x-container')
+//     .append($('<img>').attr('src', 'img/icon-x.png'))
+// );
