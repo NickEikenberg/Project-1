@@ -21,6 +21,9 @@ class Pokemon {
 }
 
 const fetchPokemon = async (numOfPokemon) => {
+  $('.pokeball-load-container').append(
+    $('<img>').attr('src', 'img/pokeball-png-45334.png')
+  );
   const pokemon = await $.ajax(
     `https://pokeapi.co/api/v2/pokemon/${numOfPokemon}`
   ).then((data) => data);
@@ -65,6 +68,7 @@ const playOriginal151 = async () => {
 
   currentPokemonName = poke.name;
 
+  $('.pokeball-load-container').empty();
   displayPokemon();
 
   // Removes the filter from the pokemon div and fully displays the current pokemon, after the player guesses
