@@ -6,6 +6,7 @@ let currentPokemonName;
 let usedNumbersArray = [];
 
 $pokemonContainer = $('.pokemon-container');
+const $spinningBackground = $('.pokemon-spinning-background');
 
 class Pokemon {
   constructor(name, img) {
@@ -57,7 +58,6 @@ const playOriginal151 = async () => {
     $('.pokemon-container').append(
       $('<img>').attr('src', poke.img).addClass('current-pokemon cover')
     );
-    const $spinningBackground = $('.pokemon-spinning-background');
     $spinningBackground.removeClass('hidden');
     $('.input-container').removeClass('hidden');
   };
@@ -169,6 +169,13 @@ const compareUserInputToPokemonName = () => {
         console.log(currentWrongs);
         displayWrongX();
         //TODO, HANDLE THE PLAYER LOSING THE GAME
+        if (currentWrongs >= 3) {
+          setTimeout(() => {
+            $('.modal-you-lose').removeClass('hidden');
+            $('.correct-answer').text(currentPokemonName);
+            $('.input-container').addClass('hidden');
+          }, 1000);
+        }
       }
     }
   });
@@ -182,6 +189,19 @@ $('.btn-play').on('click', () => {
   startGame();
 });
 
+$('.btn-play-again').on('click', () => {
+  $('.modal-you-lose').addClass('hidden');
+  gameReset();
+  displayCountdown();
+  startGame();
+});
+
 const gameReset = () => {
   usedNumbersArray = [];
+  $spinningBackground.addClass('hidden');
+  $('.pokemon-container').empty();
+  userScore = 0;
+  currentCombo = 0;
+  currentWrongs = 0;
+  $('#current-score').text(userScore);
 };
