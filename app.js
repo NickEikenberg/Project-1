@@ -148,7 +148,7 @@ const compareUserInputToPokemonName = () => {
       $('#user-input').val('');
 
       // If user guessed right
-      if (userInput === currentPokemonName) {
+      if (userInput.toLowerCase() === currentPokemonName) {
         userScore++;
         currentCombo++;
         displayPointValue();
