@@ -142,6 +142,7 @@ displayStartScreen();
 const compareUserInputToPokemonName = () => {
   $('#user-input').on('keydown', (event) => {
     if (event.keyCode === 13) {
+      event.preventDefault();
       console.log(event);
       const userInput = $('#user-input').val();
       $('#user-input').val('');
