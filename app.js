@@ -4,6 +4,7 @@ let currentCombo = 0;
 let currentWrongs = 0;
 let currentPokemonName;
 let usedNumbersArray = [];
+window.localStorage.whosThatPokemonHighScore;
 
 $pokemonContainer = $('.pokemon-container');
 const $spinningBackground = $('.pokemon-spinning-background');
@@ -219,5 +220,16 @@ const gameReset = () => {
 const saveHighScore = () => {
   if (userScore > highScore) {
     $('#high-score').text(userScore);
+    highScore = userScore;
+    window.localStorage.whosThatPokemonHighScore = highScore;
   }
 };
+
+const displaySavedHighScore = () => {
+  if (window.localStorage.whosThatPokemonHighScore) {
+    $('#high-score').text(window.localStorage.whosThatPokemonHighScore);
+  }
+};
+displaySavedHighScore();
+
+console.log(window.localStorage);
