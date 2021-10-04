@@ -109,7 +109,7 @@ main {
   width: 250px;
   height: 250px;
   position: absolute;
-  z-index: 5;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,7 +160,7 @@ main {
 .correct-answer-p,
 .win-message {
   color: var(--pokemon-yellow);
-  font-size: 1.5em;
+  font-size: 1.2em;
   text-shadow: 2px 2px 2px rgb(31, 58, 99);
   width: 75%;
 }
@@ -172,7 +172,7 @@ main {
   padding: 5% 0;
 }
 .btn-play img {
-  width: 70%;
+  width: 50%;
   transition: 0.2s;
 }
 .btn-play img:hover {

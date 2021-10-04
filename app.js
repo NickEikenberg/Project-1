@@ -144,10 +144,14 @@ displayStartScreen();
 /* THIS IS WHERE MOST OF THE GAME LOGIC GOES */
 ////////
 const compareUserInputToPokemonName = () => {
+  $('#user-input').on('focus', () => {
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+  });
+
   $('#user-input').on('keydown', (event) => {
     if (event.keyCode === 13) {
       event.preventDefault();
-      console.log(event);
       const userInput = $('#user-input').val();
       $('#user-input').val('');
 
@@ -236,3 +240,9 @@ const displaySavedHighScore = () => {
   }
 };
 displaySavedHighScore();
+
+$(document).ready(function () {
+  document.ontouchmove = function (e) {
+    e.preventDefault();
+  };
+});
