@@ -218,6 +218,15 @@ main {
   font-size: 1.5em;
 }
 
+.point-value {
+  position: absolute;
+  z-index: 4;
+  align-self: flex-start;
+  animation-name: add-point;
+  animation-duration: 0.5s;
+  animation-timing-function: ;
+}
+
 /* ANIMATIONS */
 
 @keyframes spin {
@@ -251,6 +260,20 @@ main {
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes add-point {
+  0% {
+    opacity: 0.5;
+    transform: translateY(10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 0;
   }
 }
 

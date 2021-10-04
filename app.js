@@ -1,3 +1,9 @@
+let userScore = 0;
+let highScore = 0;
+let currentCombo = 5;
+
+$pokemonContainer = $('.pokemon-container');
+
 class Pokemon {
   constructor(name, img) {
     this.name = name.includes('nidoran-')
@@ -17,9 +23,11 @@ const fetchPokemon = async (numOfPokemon) => {
   return pokemon;
 };
 
+let currentPokemonName;
+
 const playOriginal151 = async () => {
   // Fetches a random pokemon from the original 151
-  const random151 = Math.floor(Math.random() * 151);
+  const random151 = Math.floor(Math.random() * 151 + 1);
   const currentPokemon = await fetchPokemon(random151);
 
   // Saves the current pokemons name and sprite image
@@ -37,9 +45,10 @@ const playOriginal151 = async () => {
     $spinningBackground.removeClass('hidden');
     $('.input-container').removeClass('hidden');
   };
+  console.log(poke.name);
+  currentPokemonName = poke.name;
 
   displayPokemon();
-  console.log(poke.name);
 
   // Removes the filter from the pokemon div and fully displays the current pokemon, after the player guesses
   const revealPokemon = () => {
@@ -69,7 +78,24 @@ const displayCountdown = () => {
   }, 1000);
 };
 
-// IIFE to start the game. This runs as soon as the page is loaded
+const displayPointValue = () => {
+  if (currentCombo >= 5) {
+    $pokemonContainer.append(
+      $('<img>').attr('src', 'img/plus5.png').addClass('point-value')
+    );
+    setTimeout(() => {
+      $('.point-value').remove();
+    }, 500);
+  } else {
+    $pokemonContainer.append(
+      $('<img>').attr('src', 'img/plus1.png').addClass('point-value')
+    );
+    setTimeout(() => {
+      $('.point-value').remove();
+    }, 500);
+  }
+};
+const increaseScore = () => {};
 
 const displayStartScreen = () => {
   $startScreenModal = $('.game-start-modal');
@@ -77,20 +103,38 @@ const displayStartScreen = () => {
 };
 displayStartScreen();
 
-$('.btn-play').on('click', () => {
-  $('.game-start-modal').addClass('hidden');
-  displayCountdown();
-  startGame();
-});
-
 const compareUserInputToPokemonName = () => {
   $('#user-input').on('keydown', (event) => {
     if (event.code === 'Enter') {
       const userInput = $('#user-input').val();
       $('#user-input').val('');
       console.log(userInput);
+      console.log(`Pokemon name: ${currentPokemonName}`);
+      displayPointValue();
+      //   $pokemonContainer.append(
+      //     $('<img>').attr('src', 'img/plus1.png').addClass('point-value')
+      //   );
+      //   setTimeout(() => {
+      //     $('.point-value').remove();
+      //   }, 500);
+
+      if (userInput === currentPokemonName) {
+        userScore++;
+
+        if (userScore >= 151) {
+          console.log('You win!');
+        }
+      } else {
+        console.log('wrong');
+      }
     }
   });
 };
 
 compareUserInputToPokemonName();
+
+$('.btn-play').on('click', () => {
+  $('.game-start-modal').addClass('hidden');
+  displayCountdown();
+  startGame();
+});
