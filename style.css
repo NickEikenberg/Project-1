@@ -194,7 +194,6 @@ main {
 .countdown-container {
   position: absolute;
   z-index: 4;
-  animation-timing-function: ;
 }
 .countdown-container img {
   animation: zoom-out 0.25s linear;
@@ -221,13 +220,25 @@ main {
   text-shadow: 2px 2px 2px rgb(31, 58, 99);
 }
 
+.pokeball-load-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 5;
+  width: 3em;
+  animation: spin 1s infinite linear;
+}
+.pokeball-load-container img {
+  width: 100%;
+}
+
 /* SCORES AND FOOTER */
 
 .score {
   height: 15vh;
   background: rgb(254, 110, 81);
   box-shadow: 2px -2px 20px black;
-  border-inline: 10px solid rgb(58, 99, 167);
   display: flex;
   justify-content: space-around;
   align-items: center;
