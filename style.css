@@ -118,7 +118,8 @@ main {
 
 /* MODALS */
 
-.game-start-modal {
+.game-start-modal,
+.modal-you-lose {
   position: absolute;
   width: 80%;
   height: 50%;
@@ -139,13 +140,16 @@ main {
   text-align: center;
 }
 
-.how-to-play {
+.how-to-play,
+.you-lose-h2 {
   color: var(--pokemon-yellow);
   text-shadow: 2px 2px 2px rgb(31, 58, 99);
   font-size: 2em;
 }
 
-.game-rules {
+.game-rules,
+.lose-message,
+.correct-answer-p {
   color: var(--pokemon-yellow);
   font-size: 1.5em;
   text-shadow: 2px 2px 2px rgb(31, 58, 99);
@@ -160,8 +164,20 @@ main {
 }
 .btn-play img {
   width: 70%;
+  transition: 0.2s;
 }
 .btn-play img:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.btn-play-again {
+  width: 10em;
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s;
+}
+.btn-play-again:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
@@ -201,6 +217,7 @@ main {
   background: rgba(1, 1, 1, 0.5);
   text-shadow: 2px 2px 2px rgb(31, 58, 99);
 }
+
 /* SCORES AND FOOTER */
 
 .score {

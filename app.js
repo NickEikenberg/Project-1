@@ -135,12 +135,17 @@ const displayStartScreen = () => {
 };
 displayStartScreen();
 
+//////////////////////////////////////////////////
+/////////////////
+/* THIS IS WHERE MOST OF THE GAME LOGIC GOES */
+////////
 const compareUserInputToPokemonName = () => {
   $('#user-input').on('keydown', (event) => {
     if (event.code === 'Enter') {
       const userInput = $('#user-input').val();
       $('#user-input').val('');
 
+      // If user guessed right
       if (userInput === currentPokemonName) {
         userScore++;
         currentCombo++;
@@ -148,6 +153,7 @@ const compareUserInputToPokemonName = () => {
         $('#current-score').text(userScore);
         revealPokemon();
 
+        // If player wins
         if (userScore >= 151) {
           console.log('You win!');
         } else {
@@ -155,14 +161,14 @@ const compareUserInputToPokemonName = () => {
             playOriginal151();
           }, 1000);
         }
+
+        // If user guessed wrong
       } else if (userInput !== currentPokemonName) {
         currentCombo = 0;
         currentWrongs++;
         console.log(currentWrongs);
         displayWrongX();
         //TODO, HANDLE THE PLAYER LOSING THE GAME
-
-        console.log('wrong');
       }
     }
   });
