@@ -3,6 +3,7 @@ let highScore = 0;
 let currentCombo = 0;
 let currentWrongs = 0;
 let currentPokemonName;
+let usedNumbersArray = [70];
 
 $pokemonContainer = $('.pokemon-container');
 
@@ -27,8 +28,21 @@ const fetchPokemon = async (numOfPokemon) => {
 
 const playOriginal151 = async () => {
   // Fetches a random pokemon from the original 151
-  const random151 = Math.floor(Math.random() * 151 + 1);
-  const currentPokemon = await fetchPokemon(random151);
+  //   const random151 = () => Math.floor(Math.random() * 151 + 1);
+  const getNewRandom151 = () => {
+    const random151 = () => {
+      let num = Math.floor(Math.random() * 151 + 1);
+      if (usedNumbersArray.includes(num)) {
+        random151();
+      } else {
+        usedNumbersArray.push(num);
+      }
+    };
+    random151();
+    console.log(usedNumbersArray);
+    return usedNumbersArray[usedNumbersArray.length - 1];
+  };
+  const currentPokemon = await fetchPokemon(getNewRandom151());
 
   // Saves the current pokemons name and sprite image
   const poke = new Pokemon(
@@ -158,3 +172,7 @@ $('.btn-play').on('click', () => {
 //     .addClass('x-container')
 //     .append($('<img>').attr('src', 'img/icon-x.png'))
 // );
+
+const gameReset = () => {
+  usedNumbersArray = [];
+};
