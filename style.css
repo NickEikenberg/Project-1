@@ -111,13 +111,15 @@ main {
   position: absolute;
   z-index: 5;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .cover {
   filter: drop-shadow(10px 10px 10px black) invert(50%);
 }
 
 .current-pokemon {
-  border: 1px solid gold;
+  width: 100%;
 }
 
 /* MODALS */
