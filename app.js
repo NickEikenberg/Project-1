@@ -1,6 +1,7 @@
 let userScore = 0;
 let highScore = 0;
-let currentCombo = 5;
+let currentCombo = 0;
+let currentPokemonName;
 
 $pokemonContainer = $('.pokemon-container');
 
@@ -22,8 +23,6 @@ const fetchPokemon = async (numOfPokemon) => {
 
   return pokemon;
 };
-
-let currentPokemonName;
 
 const playOriginal151 = async () => {
   // Fetches a random pokemon from the original 151
@@ -109,24 +108,17 @@ const compareUserInputToPokemonName = () => {
     if (event.code === 'Enter') {
       const userInput = $('#user-input').val();
       $('#user-input').val('');
-      console.log(userInput);
-      console.log(`Pokemon name: ${currentPokemonName}`);
-      displayPointValue();
-      currentCombo++;
-      //   $pokemonContainer.append(
-      //     $('<img>').attr('src', 'img/plus1.png').addClass('point-value')
-      //   );
-      //   setTimeout(() => {
-      //     $('.point-value').remove();
-      //   }, 500);
 
       if (userInput === currentPokemonName) {
         userScore++;
+        displayPointValue();
+        currentCombo++;
 
         if (userScore >= 151) {
           console.log('You win!');
         }
       } else {
+        currentCombo = 0;
         console.log('wrong');
       }
     }
