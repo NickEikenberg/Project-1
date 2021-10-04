@@ -3,7 +3,7 @@ let highScore = 0;
 let currentCombo = 0;
 let currentWrongs = 0;
 let currentPokemonName;
-let usedNumbersArray = [70];
+let usedNumbersArray = [];
 
 $pokemonContainer = $('.pokemon-container');
 
@@ -95,6 +95,7 @@ const displayCountdown = () => {
 const displayPointValue = () => {
   if (currentCombo >= 5) {
     currentCombo = 0;
+    userScore += 4;
     $pokemonContainer.append(
       $('<img>').attr('src', 'img/plus5.png').addClass('point-value')
     );
@@ -140,8 +141,9 @@ const compareUserInputToPokemonName = () => {
 
       if (userInput === currentPokemonName) {
         userScore++;
-        displayPointValue();
         currentCombo++;
+        displayPointValue();
+        $('#current-score').text(userScore);
 
         if (userScore >= 151) {
           console.log('You win!');
