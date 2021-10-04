@@ -80,6 +80,7 @@ const displayCountdown = () => {
 
 const displayPointValue = () => {
   if (currentCombo >= 5) {
+    currentCombo = 0;
     $pokemonContainer.append(
       $('<img>').attr('src', 'img/plus5.png').addClass('point-value')
     );
@@ -111,6 +112,7 @@ const compareUserInputToPokemonName = () => {
       console.log(userInput);
       console.log(`Pokemon name: ${currentPokemonName}`);
       displayPointValue();
+      currentCombo++;
       //   $pokemonContainer.append(
       //     $('<img>').attr('src', 'img/plus1.png').addClass('point-value')
       //   );
