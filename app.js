@@ -241,8 +241,9 @@ const displaySavedHighScore = () => {
 };
 displaySavedHighScore();
 
-$(document).ready(function () {
-  document.ontouchmove = function (e) {
-    e.preventDefault();
-  };
-});
+// $(document).ready((event) => {
+//   console.log(event);
+//   document.ontouchmove = function (e) {
+//     e.preventDefault();
+//   };
+// });

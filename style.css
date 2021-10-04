@@ -184,11 +184,20 @@ main {
   width: 10em;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   transition: 0.2s;
 }
 .btn-play-again:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+.btn-play-again img {
+  width: 50%;
+}
+
+.correct-answer-p {
+  margin-bottom: 5%;
 }
 
 .modal-wrong-x {
