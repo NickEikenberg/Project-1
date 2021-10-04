@@ -157,6 +157,7 @@ const compareUserInputToPokemonName = () => {
         if (userScore >= 151) {
           setTimeout(() => {
             $('.modal-you-win').toggleClass('hidden');
+            saveHighScore();
           }, 1000);
         } else {
           setTimeout(() => {
@@ -176,6 +177,7 @@ const compareUserInputToPokemonName = () => {
             $('.modal-you-lose').removeClass('hidden');
             $('.correct-answer').text(currentPokemonName);
             $('.input-container').addClass('hidden');
+            saveHighScore();
           }, 1000);
         }
       }
@@ -212,4 +214,10 @@ const gameReset = () => {
   currentCombo = 0;
   currentWrongs = 0;
   $('#current-score').text(userScore);
+};
+
+const saveHighScore = () => {
+  if (userScore > highScore) {
+    $('#high-score').text(userScore);
+  }
 };
