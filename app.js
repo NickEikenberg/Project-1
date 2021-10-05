@@ -70,6 +70,7 @@ const playOriginal151 = async () => {
 
   $('.pokeball-load-container').empty();
   displayPokemon();
+  // displayTimer();
 
   // Removes the filter from the pokemon div and fully displays the current pokemon, after the player guesses
 };
@@ -154,6 +155,8 @@ const compareUserInputToPokemonName = () => {
       event.preventDefault();
       const userInput = $('#user-input').val();
       $('#user-input').val('');
+      let currentTime = Number($('#timer').text());
+      console.log(currentTime);
 
       // If user guessed right
       if (userInput.toLowerCase() === currentPokemonName) {
@@ -162,9 +165,10 @@ const compareUserInputToPokemonName = () => {
         displayPointValue();
         $('#current-score').text(userScore);
         revealPokemon();
+        // $('#timer').empty();
 
         // If player wins
-        if (userScore >= 151) {
+        if (usedNumbersArray.length >= 151) {
           setTimeout(() => {
             $('.modal-you-win').toggleClass('hidden');
             saveHighScore();
@@ -241,9 +245,28 @@ const displaySavedHighScore = () => {
 };
 displaySavedHighScore();
 
-// $(document).ready((event) => {
-//   console.log(event);
-//   document.ontouchmove = function (e) {
-//     e.preventDefault();
+// const displayTimer = () => {
+//   let initial = 500;
+//   let count = initial;
+//   let counter;
+
+//   const timer = () => {
+//     if (count <= 0) {
+//       clearInterval(counter);
+//       $('#timer').empty();
+//       return;
+//     }
+//     count--;
+//     displayCount(count);
 //   };
-// });
+
+//   const displayCount = (count) => {
+//     let res = count / 100;
+//     $('#timer').text(res.toPrecision(count.toString().length));
+//   };
+
+//   clearInterval(counter);
+//   counter = setInterval(timer, 10);
+
+//   displayCount(initial);
+// };

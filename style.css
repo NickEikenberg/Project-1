@@ -249,6 +249,14 @@ main {
   width: 100%;
 }
 
+#timer {
+  position: absolute;
+  z-index: 4;
+  top: 25%;
+  color: var(--pokemon-yellow);
+  text-shadow: 2px 2px 2px var(--pokemon-blue);
+}
+
 /* SCORES AND FOOTER */
 
 .score {
