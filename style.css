@@ -284,6 +284,17 @@ main {
   animation-duration: 0.5s;
 }
 
+.bonus-score {
+  position: absolute;
+  transform: translateY(-20px);
+  animation-name: float-up;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  color: var(--pokemon-yellow);
+  text-shadow: 2px 2px 2px var(--pokemon-blue);
+  font-size: 1.3em;
+}
+
 .x {
   animation-name: zoom-out;
   animation-duration: 0.2s;
@@ -337,6 +348,22 @@ main {
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0.25;
+    transform: translateY(-5px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-15px);
+  }
+
+  100% {
+    opacity: 0.25;
+    transform: translateY(-20px);
   }
 }
 

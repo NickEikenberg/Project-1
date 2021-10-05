@@ -70,7 +70,7 @@ const playOriginal151 = async () => {
 
   $('.pokeball-load-container').empty();
   displayPokemon();
-  // displayTimer();
+  displayTimer();
 
   // Removes the filter from the pokemon div and fully displays the current pokemon, after the player guesses
 };
@@ -119,7 +119,20 @@ const displayPointValue = () => {
     }, 500);
   }
 };
-const increaseScore = () => {}; //TODO
+
+const displayBonusPoints = (number) => {
+  $('.current-score').prepend(
+    $('<span>').addClass('bonus-score').text(`+${number}!`)
+  );
+
+  setTimeout(() => {
+    $('.bonus-score').empty();
+  }, 300);
+};
+
+const increaseScore = () => {
+  $('#current-score').text(userScore.toFixed(2));
+};
 
 const displayWrongX = () => {
   for (let i = 1; i <= currentWrongs; i++) {
@@ -160,10 +173,13 @@ const compareUserInputToPokemonName = () => {
 
       // If user guessed right
       if (userInput.toLowerCase() === currentPokemonName) {
+        let bonusPoints = currentTime;
         userScore++;
+        userScore += bonusPoints;
         currentCombo++;
         displayPointValue();
-        $('#current-score').text(userScore);
+        increaseScore();
+        displayBonusPoints(bonusPoints);
         revealPokemon();
         // $('#timer').empty();
 
@@ -185,7 +201,7 @@ const compareUserInputToPokemonName = () => {
         currentWrongs++;
 
         displayWrongX();
-        //TODO, HANDLE THE PLAYER LOSING THE GAME
+
         if (currentWrongs >= 3) {
           setTimeout(() => {
             $('.modal-you-lose').removeClass('hidden');
@@ -245,28 +261,30 @@ const displaySavedHighScore = () => {
 };
 displaySavedHighScore();
 
-// const displayTimer = () => {
-//   let initial = 500;
-//   let count = initial;
-//   let counter;
+const displayTimer = () => {
+  let initial = 500;
+  let count = initial;
+  let counter;
 
-//   const timer = () => {
-//     if (count <= 0) {
-//       clearInterval(counter);
-//       $('#timer').empty();
-//       return;
-//     }
-//     count--;
-//     displayCount(count);
-//   };
+  const timer = () => {
+    if (count <= 0) {
+      clearInterval(counter);
+      $('#timer').empty();
+      return;
+    }
+    count--;
+    displayCount(count);
+  };
 
-//   const displayCount = (count) => {
-//     let res = count / 100;
-//     $('#timer').text(res.toPrecision(count.toString().length));
-//   };
+  const displayCount = (count) => {
+    let res = count / 100;
+    $('#timer').text(res.toPrecision(count.toString().length));
+  };
 
-//   clearInterval(counter);
-//   counter = setInterval(timer, 10);
+  clearInterval(counter);
+  counter = setInterval(timer, 10);
 
-//   displayCount(initial);
-// };
+  displayCount(initial);
+
+  //TODO create functions to stop and reset timer
+};
