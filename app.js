@@ -169,7 +169,6 @@ const compareUserInputToPokemonName = () => {
       const userInput = $('#user-input').val();
       $('#user-input').val('');
       let currentTime = Number($('#timer').text());
-      console.log(currentTime);
 
       // If user guessed right
       if (userInput.toLowerCase() === currentPokemonName) {
@@ -181,7 +180,8 @@ const compareUserInputToPokemonName = () => {
         increaseScore();
         displayBonusPoints(bonusPoints);
         revealPokemon();
-        // $('#timer').empty();
+        clearInterval(displayTimer);
+        $('#timer').text('');
 
         // If player wins
         if (usedNumbersArray.length >= 151) {
@@ -261,6 +261,7 @@ const displaySavedHighScore = () => {
 };
 displaySavedHighScore();
 
+// TIMER FUNCTION ADAPTED FROM: https://stackoverflow.com/questions/22385368/jquery-countdown-timer-with-milliseconds
 const displayTimer = () => {
   let initial = 500;
   let count = initial;
