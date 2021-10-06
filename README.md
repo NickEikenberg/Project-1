@@ -23,6 +23,7 @@ There is also a combo counter that keeps tracking of how many correct guesses in
 JavaScript, JQuery, HTML, CSS, AJAX
 
 The PokeAPI: https://pokeapi.co/
+
 Pokemon themed text created using: https://fontmeme.com/pokemon-font/
 
 ## Known Issues
