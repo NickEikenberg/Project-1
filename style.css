@@ -385,6 +385,7 @@ main {
   .input-container {
     align-self: flex-start;
     bottom: 15vh;
+    z-index: 5;
   }
 
   #timer {
