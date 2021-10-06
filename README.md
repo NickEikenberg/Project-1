@@ -1,8 +1,7 @@
-# Project-1
+# Who's That Pokemon?
 
-Pokédex Project
+An app that shows the user a random pokemon, whose name they have to type in to earn points
 
-A pokedex app directly inspired by the pokedex from Pokemon Ruby/Sapphire and Pokemon Diamond/Pearl.
+## Live Site Link
 
-Diamond/Pearl reference: https://www.youtube.com/watch?v=cGnIp8pwcE8
-Ruby/Sapphire reference: https://www.youtube.com/watch?v=cnB5ipNMMgU&t=16s
+https://nervous-raman-502e99.netlify.app/

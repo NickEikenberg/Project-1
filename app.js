@@ -20,6 +20,7 @@ class Pokemon {
   }
 }
 
+// This function fetches the data for the id number of the pokemon that's passed in. EX: fetchPokemon(1) will retrieve Bulbasaur because his ID in the pokedex is 1
 const fetchPokemon = async (numOfPokemon) => {
   $('.pokeball-load-container').append(
     $('<img>').attr('src', 'img/pokeball-png-45334.png')
@@ -31,6 +32,7 @@ const fetchPokemon = async (numOfPokemon) => {
   return pokemon;
 };
 
+// This function uses a random number between 1 and 151 to fetch a random pokemon, then adds that pokemons id to an array, to ensure that the same pokemon isn't called twice
 const playOriginal151 = async () => {
   currentPokemonName = '';
   // Fetches a random pokemon from the original 151
@@ -39,16 +41,17 @@ const playOriginal151 = async () => {
     const random151 = () => {
       let num = Math.floor(Math.random() * 151 + 1);
       if (usedNumbersArray.includes(num)) {
-        random151();
+        //Checks to see if the usedNumbers array contains the current Pokemon ID
+        random151(); // If the ID is already in the array, the function is called again
       } else {
-        usedNumbersArray.push(num);
+        usedNumbersArray.push(num); // Once a unique ID is found, it is pushed into the usedNumbers array to make sure the same pokemon isn't called twice
       }
     };
     random151();
 
-    return usedNumbersArray[usedNumbersArray.length - 1];
+    return usedNumbersArray[usedNumbersArray.length - 1]; // Returns the newest addition to the usedNumbers array
   };
-  const currentPokemon = await fetchPokemon(getNewRandom151());
+  const currentPokemon = await fetchPokemon(getNewRandom151()); // An async function that waits for the result of fetchPokemon with the random number passed in
 
   // Saves the current pokemons name and sprite image
   const poke = new Pokemon(
@@ -122,7 +125,7 @@ const displayPointValue = () => {
 
 const displayBonusPoints = (number) => {
   $('.current-score').prepend(
-    $('<span>').addClass('bonus-score').text(`+${number}!`)
+    $('<span>').addClass('bonus-score').text(`BONUS! +${number}!`)
   );
 
   setTimeout(() => {
@@ -286,6 +289,4 @@ const displayTimer = () => {
   counter = setInterval(timer, 10);
 
   displayCount(initial);
-
-  //TODO create functions to stop and reset timer
 };
