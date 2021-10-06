@@ -384,14 +384,14 @@ main {
 @media screen and (max-width: 420px) {
   .input-container {
     align-self: flex-start;
-    top: 25vh;
+    bottom: 25vh;
   }
 
   #timer {
     top: 22vh;
   }
 
-  header {
+  /* header {
     align-self: flex-end;
     justify-self: flex-end;
     order: 3;
@@ -402,7 +402,7 @@ main {
     align-self: flex-start;
     justify-self: flex-start;
     order: -1;
-  }
+  } */
 }
 
 /* EXTRA CLASSES */
