@@ -384,7 +384,7 @@ main {
 @media screen and (max-width: 420px) {
   .input-container {
     align-self: flex-start;
-    bottom: 15vh;
+    bottom: 12vh;
     z-index: 5;
   }
 
