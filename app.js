@@ -51,7 +51,7 @@ const playOriginal151 = async () => {
 
     return usedNumbersArray[usedNumbersArray.length - 1]; // Returns the newest addition to the usedNumbers array
   };
-  const currentPokemon = await fetchPokemon(getNewRandom151()); // An async function that waits for the result of fetchPokemon with the random number passed in
+  const currentPokemon = await fetchPokemon(getNewRandom151()); // An async function that waits for the result of fetchPokemon with the random num  ber passed in
 
   // Saves the current pokemons name and sprite image
   const poke = new Pokemon(
