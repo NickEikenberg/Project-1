@@ -156,70 +156,6 @@ const displayStartScreen = () => {
 };
 displayStartScreen();
 
-//////////////////////////////////////////////////
-/////////////////
-/* THIS IS WHERE MOST OF THE GAME LOGIC GOES */
-////////
-const compareUserInputToPokemonName = () => {
-  $('#user-input').on('focus', () => {
-    window.scrollTo(0, 0);
-    $('body').scrollTop = 0;
-  });
-
-  $('#user-input').on('keydown', (event) => {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-      const userInput = $('#user-input').val();
-      $('#user-input').val('');
-      let currentTime = Number($('#timer').text());
-
-      // If user guessed right
-      if (userInput.toLowerCase() === currentPokemonName) {
-        let bonusPoints = currentTime;
-        userScore++;
-        userScore += bonusPoints;
-        currentCombo++;
-        displayPointValue();
-        increaseScore();
-        displayBonusPoints(bonusPoints);
-        revealPokemon();
-        clearInterval(displayTimer);
-        $('#timer').text('');
-
-        // If player wins
-        if (usedNumbersArray.length >= 151) {
-          setTimeout(() => {
-            $('.modal-you-win').toggleClass('hidden');
-            saveHighScore();
-          }, 1000);
-        } else {
-          setTimeout(() => {
-            playOriginal151();
-          }, 1000);
-        }
-
-        // If user guessed wrong
-      } else if (userInput !== currentPokemonName) {
-        currentCombo = 0;
-        currentWrongs++;
-
-        displayWrongX();
-
-        if (currentWrongs >= 3) {
-          setTimeout(() => {
-            $('.modal-you-lose').removeClass('hidden');
-            $('.correct-answer').text(currentPokemonName);
-            $('.input-container').addClass('hidden');
-            saveHighScore();
-          }, 1000);
-        }
-      }
-    }
-  });
-};
-
-compareUserInputToPokemonName();
-
 $('.btn-play').on('click', () => {
   $('.game-start-modal').addClass('hidden');
   displayCountdown();
@@ -290,3 +226,67 @@ const displayTimer = () => {
 
   displayCount(initial);
 };
+
+//////////////////////////////////////////////////
+/////////////////
+/* THIS IS WHERE MOST OF THE GAME LOGIC GOES */
+////////
+const compareUserInputToPokemonName = () => {
+  $('#user-input').on('focus', () => {
+    window.scrollTo(0, 0);
+    $('body').scrollTop = 0;
+  });
+
+  $('#user-input').on('keydown', (event) => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      const userInput = $('#user-input').val();
+      $('#user-input').val('');
+      let currentTime = Number($('#timer').text());
+
+      // If user guessed right
+      if (userInput.toLowerCase() === currentPokemonName) {
+        let bonusPoints = currentTime;
+        userScore++;
+        userScore += bonusPoints;
+        currentCombo++;
+        displayPointValue();
+        increaseScore();
+        displayBonusPoints(bonusPoints);
+        revealPokemon();
+
+        // If player wins
+        if (usedNumbersArray.length >= 151) {
+          setTimeout(() => {
+            $('.modal-you-win').toggleClass('hidden');
+            $('#timer').empty();
+            saveHighScore();
+          }, 1000);
+        } else {
+          setTimeout(() => {
+            playOriginal151();
+          }, 1000);
+        }
+
+        // If user guessed wrong
+      } else if (userInput !== currentPokemonName) {
+        currentCombo = 0;
+        currentWrongs++;
+
+        displayWrongX();
+
+        if (currentWrongs >= 3) {
+          setTimeout(() => {
+            $('#timer').empty();
+            $('.modal-you-lose').removeClass('hidden');
+            $('.correct-answer').text(currentPokemonName);
+            $('.input-container').addClass('hidden');
+            saveHighScore();
+          }, 1000);
+        }
+      }
+    }
+  });
+};
+
+compareUserInputToPokemonName();
