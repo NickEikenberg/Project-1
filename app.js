@@ -251,7 +251,7 @@ const gameReset = () => {
 
 const saveHighScore = () => {
   if (userScore > highScore) {
-    $('#high-score').text(userScore);
+    $('#high-score').text(userScore.toFixed(2));
     highScore = userScore;
     window.localStorage.whosThatPokemonHighScore = highScore;
   }
