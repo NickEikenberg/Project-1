@@ -376,6 +376,17 @@ main {
   }
 }
 
+@media screen and (max-width: 420px) {
+  .input-container {
+    align-self: flex-start;
+    top: 25vh;
+  }
+
+  #timer {
+    top: 22vh;
+  }
+}
+
 /* EXTRA CLASSES */
 
 .hidden {
